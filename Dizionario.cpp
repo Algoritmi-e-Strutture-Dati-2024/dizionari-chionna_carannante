@@ -15,10 +15,10 @@ private:
     // Funzione hash di base
     int hashFunction(const std::string key) const {
         int hash = 0;
-        for (char ch : key) {
-            hash = (hash * 31 + ch) % TABLE_SIZE; // Algoritmo di hashing semplice
+                for (char ch : key) {
+                    hash += static_cast<int>(ch); // Algoritmo di hashing semplice
         }
-        return hash;
+        return hash%TABLE_SIZE;
     }
 
 public:

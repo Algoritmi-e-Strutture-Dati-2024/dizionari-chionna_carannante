@@ -1,5 +1,5 @@
 #include <string>
-#include "Dizionario.cpp"
+#include "DizionarioEsteso.cpp"
 
 int main() {
 
@@ -14,6 +14,18 @@ int main() {
     std::cout << "Value for 'pen': " << dict.recupera("pen") << "\n";
 
     dict.stampa();
+    //appartiene
+    std::cout <<"Key 'car' exists: "<<(dict.appartiene("car")? "true":"false");
+    std::cout <<"Key 'pen' exists: "<<(dict.appartiene("pen")? "true":"false");
+
+    //possibile collisione
+    dict.inserisci("ppale", "collisione");
+
+    //cancellazione chiave
+    dict.cancella("car");
+    dict.stampa();
+
+
 
     return 0;
 }
