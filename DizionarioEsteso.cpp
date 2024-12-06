@@ -21,14 +21,18 @@ private:
         return hash%TABLE_SIZE;
     }
 
+int findSlot (int index){
+    while(table[index].isOccupied==true){
+        index++;}
+        return index;
+}
 public:
     // Metodo per aggiungere una coppia chiave-valore
     void inserisci(const std::string key, const T value) {
         int index = hashFunction(key);
 
         if (table[index].isOccupied) {
-            std::cerr << "Collision detected for key: " << key << " at index " << index << ". Not handling collisions.\n";
-            return;
+           index=findSlot(index);
         }
 
         table[index].key = key;
