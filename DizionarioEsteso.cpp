@@ -16,9 +16,9 @@ private:
     int hashFunction(const std::string key) const {
         int hash = 0;
         for (char ch : key) {
-            hash = (hash * 31 + ch) % TABLE_SIZE; // Algoritmo di hashing semplice
+            hash += static_cast<int>(ch); // Algoritmo di hashing semplice
         }
-        return hash;
+        return hash%TABLE_SIZE;
     }
 
 public:
@@ -36,6 +36,11 @@ public:
         table[index].isOccupied = true;
     }
 
+    T cancella(const std::string key){
+        int index = hashFunction(key);
+        table[index].isOccupied = false;
+    }
+
     // Metodo per ottenere il valore associato a una chiave
     T recupera(const std::string key) const {
         int index = hashFunction(key);
@@ -46,6 +51,15 @@ public:
 
         return "Key not found!";
     }
+    bool appartiene(const std::string key) const {
+        int index = hashFunction(key);
+
+        if (table[index].isOccupied && table[index].key == key) {
+            return true;
+        }
+
+        return false;
+    }
 
     // Metodo per stampare il contenuto del dizionario
     void stampa() const {
@@ -55,5 +69,6 @@ public:
             }
         }
     }
-    
+
+
 };
