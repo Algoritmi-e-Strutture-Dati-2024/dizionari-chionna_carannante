@@ -15,8 +15,8 @@ int main() {
 
     dict.stampa();
     //appartiene
-    std::cout <<"Key 'car' exists: "<<(dict.appartiene("car")? "true":"false");
-    std::cout <<"Key 'pen' exists: "<<(dict.appartiene("pen")? "true":"false");
+    std::cout <<"Chiave 'car' esiste: "<<(dict.appartiene("car")? "true":"false");
+    std::cout <<"Chiave 'pen' esiste: "<<(dict.appartiene("pen")? "true":"false");
 
     //possibile collisione
     dict.inserisci("ppale", "collisione");
